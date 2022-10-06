@@ -12,7 +12,7 @@ configs['tmux.conf']='.tmux.conf'
 for i in ${!configs[@]}; do
   pref=$(dirname ${configs[${i}]})
   if [ ${pref} != '.' -a ! -d ~/${pref} ]; then
-    /usr/bin/mkdir -p ${pref} 
+    /usr/bin/mkdir -p ~/${pref} 
   fi
   /usr/bin/ln -s ${repodir}/${i} ~/${configs[${i}]}
 done
