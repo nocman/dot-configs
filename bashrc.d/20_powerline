@@ -1,7 +1,7 @@
 # powerline
 
 pythonver="python$(python -c 'import sys; print(".".join(sys.version.split()[0].split(".")[0:2]))')"
-srcpline="~/.local/lib/${pythonver}/site-packages/powerline/bindings/bash/powerline.sh"
+srcpline="${HOME}/.local/lib/${pythonver}/site-packages/powerline/bindings/bash/powerline.sh"
 
 if [ -f ${srcpline} ]; then
   powerline-daemon -q
