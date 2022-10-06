@@ -1,10 +1,14 @@
 # powerline
 
 pythonver="python$(python -c 'import sys; print(".".join(sys.version.split()[0].split(".")[0:2]))')"
+srcpline="~/.local/lib/${pythonver}/site-packages/powerline/bindings/bash/powerline.sh"
 
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-source ~/.local/lib/${pythonver}/site-packages/powerline/bindings/bash/powerline.sh
+if [ -f ${srcpline} ]; then
+  powerline-daemon -q
+  POWERLINE_BASH_CONTINUATION=1
+  POWERLINE_BASH_SELECT=1
 
-unset pythonver
+  source ${srcpline}
+fi
+
+unset pythonver srcpline
