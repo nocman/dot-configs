@@ -1,0 +1,2 @@
+powerline-status
+powerline-k8sstatus

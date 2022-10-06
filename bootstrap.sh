@@ -16,3 +16,7 @@ for i in ${!configs[@]}; do
   fi
   /usr/bin/ln -s ${repodir}/${i} ~/${configs[${i}]}
 done
+
+if [ -f requirements.txt ]; then
+  /usr/bin/pip install --user --quiet -r requirements.txt
+fi
