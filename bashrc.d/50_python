@@ -1,0 +1,17 @@
+venv() {
+  local vdir="${HOME}/venv"
+
+  if [[ $# == 0 ]]; then
+    for i in $(ls -d ${vdir}/*); do
+      if [ -d ${i} ]; then
+         basename ${i}
+      fi
+    done
+  elif [[ $# == 1 ]]; then
+    if [ -d ${vdir}/$1 ]; then
+      source ${vdir}/$1/bin/activate
+    fi
+  else
+    echo 'Too many arguments: function requires single arg.'
+  fi
+}

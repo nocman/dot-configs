@@ -1,0 +1,10 @@
+# powerline
+
+pythonver="python$(python -c 'import sys; print(".".join(sys.version.split()[0].split(".")[0:2]))')"
+
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+source ~/.local/lib/${pythonver}/site-packages/powerline/bindings/bash/powerline.sh
+
+unset pythonver

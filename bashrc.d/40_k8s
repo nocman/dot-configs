@@ -1,0 +1,14 @@
+if [ -x /usr/bin/kubectl ]; then
+  source <(/usr/bin/kubectl completion bash)
+
+  alias k=kubectl
+  complete -o default -F __start_kubectl k
+  
+  kctx() {
+    if [ $# -gt 0 ]; then
+      kubectl config use-context $@
+    else
+      kubectl config get-contexts
+    fi
+  }
+fi
