@@ -21,6 +21,6 @@ rpt() {
 }
 
 # Buzz off you filthy CapsLock!
-if [ -x /usr/bin/dconf ]; then
+if [ -x /usr/bin/dconf -a -n "${DISPLAY}" ]; then
   dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:none']"
 fi
