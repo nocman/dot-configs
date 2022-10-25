@@ -1,6 +1,10 @@
 #!/bin/bash
 
-/usr/bin/which pip 1>/dev/null 2>/dev/null || echo 'Install pip first.' && exit 1
+/usr/bin/which pip 1>/dev/null 2>/dev/null 
+if [[ $? > 0 ]]; then
+  echo 'Install pip first.'
+  exit 1
+fi
 
 repodir="$PWD/$(/usr/bin/dirname ${0})"
 
