@@ -1,5 +1,7 @@
 #!/bin/bash
 
+/usr/bin/which pip 1>/dev/null 2>/dev/null || echo 'Install pip first.' && exit 1
+
 repodir="$PWD/$(/usr/bin/dirname ${0})"
 
 declare -A configs
