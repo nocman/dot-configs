@@ -1,5 +1,8 @@
 # powerline
 
+# unset kubernetes contex to be 101% sure, that powerline won't block shell looking for nonexisting k8s cluster
+kubectl config unset current-context > /dev/null
+
 pythonver="python$(python -c 'import sys; print(".".join(sys.version.split()[0].split(".")[0:2]))')"
 srcpline="${HOME}/.local/lib/${pythonver}/site-packages/powerline/bindings/bash/powerline.sh"
 
