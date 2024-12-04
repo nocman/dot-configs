@@ -1,0 +1,22 @@
+check_ssh_agent() {
+  /usr/bin/ssh-add -l 1>/dev/null 2>/dev/null
+
+  case $? in
+    1)
+      /usr/bin/ssh-add -t8h
+    ;;
+  
+    2)
+      eval $(/usr/bin/ssh-agent ${AGTOPTS} | tee ~/.ssh/agent.sh)
+    ;;
+  esac
+}
+
+[[ -d ~/.ssh ]] && mkdir -pm 0700 ~/.ssh
+
+[[ -f ~/.ssh/agent.sh ]] && source ~/.ssh/agent.sh
+
+check_ssh_agent
+check_ssh_agent
+
+unset -f check_ssh_agent
