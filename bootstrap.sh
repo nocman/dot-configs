@@ -8,13 +8,19 @@ if [[ $ID == "ubuntu" ]]; then
 # User specific aliases and functions
 if [ -d ~/.bashrc.d ]; then
   for rc in ~/.bashrc.d/*; do
-    if [ -f "$rc" ]; then
-      . "$rc"
+    if [ -f {$rc} ]; then
+      . ${rc}
     fi
   done
 fi
 
 unset rc
+--8<--
+
+and install python-is-python3 package:
+
+--8<--
+apt install python-is-python3
 --8<--
 
 "
