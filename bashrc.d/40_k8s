@@ -1,14 +1,31 @@
-if [ -x /usr/bin/kubectl ]; then
-  source <(/usr/bin/kubectl completion bash)
+DEFAULT_MINIKUBE_PROFILE='current'
 
-  alias k=kubectl
+if [ -x /usr/bin/minikube ]; then
+  source <(/usr/bin/minikube completion bash)
+
+  /usr/bin/minikube profile "${DEFAULT_MINIKUBE_PROFILE}"
+
+  if [ ! -x /usr/bin/kubectl ]; then
+    KUBECTL="/usr/bin/minikube kubectl --"
+    alias kubectl=${KUBECTL}
+  fi
+fi
+
+if [ -x /usr/bin/kubectl -o -v KUBECTL ]; then
+  source <(${KUBECTL:-/usr/bin/kubectl} completion bash)
+
+  alias k=${KUBECTL:-/usr/bin/kubectl}
   complete -o default -F __start_kubectl k
-  
-  kctx() {
-    if [ $# -gt 0 ]; then
-      kubectl config use-context $@
-    else
-      kubectl config get-contexts
-    fi
-  }
+
+  if [[ -x /usr/bin/kubectx ]]; then
+    alias kctx=/usr/bin/kubectx
+  else
+    kctx() {
+      if [ $# -gt 0 ]; then
+        kubectl config use-context $@
+      else
+        kubectl config get-contexts
+      fi
+    }
+  fi
 fi
