@@ -20,9 +20,14 @@ unset rc
 "
 fi
 
+pip help install |grep break-system 1>/dev/null 2>/dev/null
+if [[ $? == 0 ]]; then
+  PIPINSTOPTS='--break-system-packages'
+fi
+
 /usr/bin/which pip 1>/dev/null 2>/dev/null 
 if [[ $? > 0 ]]; then
-  echo 'Install pip first.'
+  echo "Install pip first."
   exit 1
 fi
 
@@ -47,5 +52,5 @@ for i in ${!configs[@]}; do
 done
 
 if [ -f requirements.txt ]; then
-  /usr/bin/pip install --user --quiet -r requirements.txt
+  /usr/bin/pip install ${PIPINSTOPTS} --user --quiet -r requirements.txt
 fi
