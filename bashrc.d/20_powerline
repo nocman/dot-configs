@@ -1,7 +1,11 @@
 # powerline
 
 # unset kubernetes contex to be 101% sure, that powerline won't block shell looking for nonexisting k8s cluster
-kubectl config unset current-context > /dev/null
+if [ -x /usr/bin/kubectl ] ; then
+  kubectl config unset current-context > /dev/null
+elif [ -x /usr/bin/minikube ] ; then
+  minikube kubectl -- config unset current-context > /dev/null
+fi
 
 pythonver="python$(python -c 'import sys; print(".".join(sys.version.split()[0].split(".")[0:2]))')"
 srcpline="${HOME}/.local/lib/${pythonver}/site-packages/powerline/bindings/bash/powerline.sh"
