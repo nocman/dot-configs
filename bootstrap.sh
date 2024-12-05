@@ -45,6 +45,7 @@ declare -A configs
 configs['bashrc.d']='.bashrc.d'
 configs['powerline']='.config/powerline'
 configs['tmux.conf']='.tmux.conf'
+configs['nvim']='.config/nvim'
 
 for i in ${!configs[@]}; do
   pref=$(dirname ${configs[${i}]})
