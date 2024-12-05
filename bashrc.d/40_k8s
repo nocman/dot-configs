@@ -1,4 +1,4 @@
-DEFAULT_MINIKUBE_PROFILE='current'
+DEFAULT_MINIKUBE_PROFILE='1-31'
 
 if [ -x /usr/bin/minikube ]; then
   source <(/usr/bin/minikube completion bash)
