@@ -8,6 +8,7 @@ check_ssh_agent() {
   
     2)
       eval $(/usr/bin/ssh-agent ${AGTOPTS} | tee ~/.ssh/agent.sh)
+      check_ssh_agent
     ;;
   esac
 }
@@ -16,7 +17,6 @@ check_ssh_agent() {
 
 [[ -f ~/.ssh/agent.sh ]] && source ~/.ssh/agent.sh
 
-check_ssh_agent
 check_ssh_agent
 
 unset -f check_ssh_agent
