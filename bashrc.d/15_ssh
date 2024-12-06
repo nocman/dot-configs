@@ -1,9 +1,11 @@
+AGTOPTS='-t8h'
+
 check_ssh_agent() {
   /usr/bin/ssh-add -l 1>/dev/null 2>/dev/null
 
   case $? in
     1)
-      /usr/bin/ssh-add -t8h
+      /usr/bin/ssh-add
     ;;
   
     2)
